@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { getDocumentData } from "../services/api";
 import DocumentCard from "../components/DocumentCard";
 
-const AddDocument = ({ route, navigation }) => {
+const AddDocument = ({ route, navigation })  => {
   const { documentId } = route.params;
   console.log(`documentId: ${documentId}`);
   // Realiza a analise (parse) de data para extrair a informação do documento
