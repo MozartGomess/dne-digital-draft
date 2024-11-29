@@ -1,44 +1,64 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import QRCode from "react-native-qrcode-svg";
 
-const DocumentCard = (documentInfo) => {
-    console.log(documentInfo);
-    return (
-        <View style={styles.card}>
-            <Text style={styles.title}>{documentInfo.name}</Text>
-            <Text style={styles.description}>CPF: {documentInfo.cpf}</Text>
-            <Text style={styles.description}>Birth Date: {documentInfo.birthDate}</Text>
-            <Text style={styles.description}>Institution: {documentInfo.institution}</Text>
-            <Text style={styles.description}>Course: {documentInfo.course}</Text>
-            <Text style={styles.description}>Issuer: {documentInfo.issuer}</Text>
-            <Text style={styles.description}>Validity: {documentInfo.validity}</Text>
-            <Text style={styles.description}>ID: {documentInfo._id}</Text>
-        </View>
-    );
+const DocumentCard = ({
+  name,
+  cpf,
+  birthDate,
+  institution,
+  course,
+  issuer,
+  _id,
+  validity,
+}) => {
+  const formatDate = (date) => {
+    const d = new Date(date);
+    const day = `0${d.getDate()}`.slice(-2);
+    const month = `0${d.getMonth() + 1}`.slice(-2);
+    const year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  return (
+    <View style={styles.card}>
+      <Text style={styles.text}>Nome: {name}</Text>
+      <Text style={styles.text}>CPF: {cpf}</Text>
+      <Text style={styles.text}>
+        Data de Nascimento: {formatDate(birthDate)}
+      </Text>
+      <Text style={styles.text}>Instituição: {institution}</Text>
+      <Text style={styles.text}>Curso: {course}</Text>
+      <Text style={styles.text}>Emissor: {issuer}</Text>
+      <Text style={styles.text}>ID: {_id}</Text>
+      <Text style={styles.text}>Válido até {formatDate(validity)}</Text>
+      <View style={styles.qrCodeContainer}>
+        <QRCode value={_id} size={100} />
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    card: {
-        backgroundColor: '#fff',
-        padding: 20,
-        marginVertical: 10,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 3,
-    },
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    description: {
-        fontSize: 14,
-        color: '#666',
-        marginBottom: 5,
-    },
+  card: {
+    padding: 20,
+    margin: 10,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  text: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  qrCodeContainer: {
+    alignItems: "center",
+    marginTop: 60,
+  },
 });
 
 export default DocumentCard;

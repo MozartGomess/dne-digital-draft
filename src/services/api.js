@@ -9,11 +9,12 @@ const api = axios.create({
 export const getDocumentData = async (qrCodeData) => {
   try {
     const token = await getToken();
-    const response = await api.post("/api/documents", { qrCodeData }, {
+    const response = await api.get(`/api/students/${ qrCodeData }`, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
     });
+    // console.log('Document data:', response.data);
     return response.data;
   } catch (error) {
     console.error(error);

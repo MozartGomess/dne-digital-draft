@@ -1,37 +1,36 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-const Card = ({ title, content }) => {
-    return (
-        <View style={styles.card}>
-            <Text style={styles.cardTitle}>{title}</Text>
-            <Text style={styles.cardContent}>{content}</Text>
-        </View>
-    );
+const Card = ({ name, cpf }) => {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.label}>Nome: <Text style={styles.content}>{name}</Text></Text>
+      <Text style={styles.label}>CPF: <Text style={styles.content}>{cpf}</Text></Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    card: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        padding: 16,
-        margin: 16,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 2,
-        transition: 'box-shadow 0.3s ease',
-    },
-    cardTitle: {
-        fontSize: 24,
-        marginBottom: 8,
-    },
-    cardContent: {
-        fontSize: 16,
-        color: '#333',
-    },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    padding: 16,
+    margin: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  label: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  content: {
+    fontSize: 16,
+    color: "#333",
+  },
 });
 
 export default Card;

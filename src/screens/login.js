@@ -8,6 +8,7 @@ import {
   Alert,
   ImageBackground,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons"; // Importando o ícone para o olho (ver/ocultar senha)
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -20,10 +21,13 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Estado para controlar a visibilidade da senha
+  const [loading, setLoading] = useState(false); // Estado para controlar o loading
 
   const handleLogin = async () => {
     if (email && password) {
+      setLoading(true); // Ativa o loading
       const response = await loginUser(email, password);
+      setLoading(false); // Desativa o loading
       if (response.success) {
         // Armazenar o token JWT no AsyncStorage
         await AsyncStorage.setItem("token", response.data.token);
@@ -79,8 +83,12 @@ const Login = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Acessar</Text>
+          <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
+            {loading ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <Text style={styles.buttonText}>Acessar</Text>
+            )}
           </TouchableOpacity>
         </View>
 
