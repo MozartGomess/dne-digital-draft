@@ -1,4 +1,3 @@
-// screens/DocumentDetails.js
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Modal, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons"; // Usando ícones do Material Icons
@@ -24,15 +23,10 @@ const DocumentDetails = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <Icon name="arrow-back" size={30} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.title}>Detalhes</Text>
-      </View>
       {/* Display document details using DocumentCard */}
       <DocumentCard {...item} />
 
+      {/* Button to show delete confirmation */}
       <TouchableOpacity
         style={styles.deleteButton}
         onPress={() => setModalVisible(true)}
@@ -76,22 +70,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#fff", // Fundo laranja
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginLeft: 10,
+    backgroundColor: "#fff", // Fundo branco
+    paddingTop: 60, // Aumenta o espaço superior para descer o conteúdo
   },
   deleteButton: {
     position: "absolute",
     top: 20,
-    right: 20,
+    right: 30,
     padding: 10,
     backgroundColor: "red",
     borderRadius: 5,
@@ -131,4 +116,5 @@ const styles = StyleSheet.create({
     bottom: 20, // Ajuste a posição da imagem para subir um pouco
   },
 });
+
 export default DocumentDetails;

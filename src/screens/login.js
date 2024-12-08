@@ -31,7 +31,14 @@ const Login = ({ navigation }) => {
       if (response.success) {
         // Armazenar o token JWT no AsyncStorage
         await AsyncStorage.setItem("token", response.data.token);
-        navigation.replace("Home");
+        
+        // Exibir mensagem de sucesso após login
+        Alert.alert("Parabéns!", "Login realizado com sucesso.", [
+          {
+            text: "OK", 
+            onPress: () => navigation.replace("Home") // Redireciona para a tela Home
+          }
+        ]);
       } else {
         Alert.alert("Falha no Login", response.message);  // Mensagem de erro de login
       }

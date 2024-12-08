@@ -20,18 +20,22 @@ const DocumentCard = ({
     return `${day}/${month}/${year}`;
   };
 
+  const renderBoldText = (label, value) => (
+    <Text style={styles.text}>
+      <Text style={styles.bold}>{label}:</Text> {value}
+    </Text>
+  );
+
   return (
     <View style={styles.card}>
-      <Text style={styles.text}>Nome: {name}</Text>
-      <Text style={styles.text}>CPF: {cpf}</Text>
-      <Text style={styles.text}>
-        Data de Nascimento: {formatDate(birthDate)}
-      </Text>
-      <Text style={styles.text}>Instituição: {institution}</Text>
-      <Text style={styles.text}>Curso: {course}</Text>
-      <Text style={styles.text}>Emissor: {issuer}</Text>
-      <Text style={styles.text}>ID: {_id}</Text>
-      <Text style={styles.text}>Válido até {formatDate(validity)}</Text>
+      {renderBoldText("Nome", name)}
+      {renderBoldText("CPF", cpf)}
+      {renderBoldText("Data de Nascimento", formatDate(birthDate))}
+      {renderBoldText("Instituição", institution)}
+      {renderBoldText("Curso", course)}
+      {renderBoldText("Emissor", issuer)}
+      {renderBoldText("ID", _id)}
+      {renderBoldText("Válido até", formatDate(validity))}
       <View style={styles.qrCodeContainer}>
         <QRCode value={_id} size={100} />
       </View>
@@ -50,14 +54,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 1,
+    alignItems: "flex-start", // Alinha o conteúdo à esquerda
   },
   text: {
     fontSize: 16,
-    marginBottom: 5,
+    marginBottom: 15,  // Aumenta o espaçamento entre as linhas
+    textAlign: "left", // Alinha o texto à esquerda
+  },
+  bold: {
+    fontWeight: "bold",
   },
   qrCodeContainer: {
     alignItems: "center",
-    marginTop: 60,
+    justifyContent: "center",
+    width: "100%", // Garante que o contêiner ocupe a largura total
+    marginTop: 30, // Ajustei o espaçamento antes do QR Code
   },
 });
 
