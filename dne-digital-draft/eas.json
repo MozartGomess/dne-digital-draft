@@ -1,0 +1,30 @@
+{
+  "cli": {
+    "version": ">= 14.0.3",
+    "appVersionSource": "remote"
+  },
+ "build": {
+    "development": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://dne-digital-backend.onrender.com"
+      },
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://dne-digital-backend.onrender.com"
+      },
+      "distribution": "internal"
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://dne-digital-backend.onrender.com"
+      },
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
