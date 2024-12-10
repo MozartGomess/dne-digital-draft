@@ -1,10 +1,24 @@
-# DNE Digital JS
+# Carteira de Estudante Digital (dne-digital)
 
-Este é o repositório do projeto DNE Digital JS.
+Este projeto tem como objetivo transformar a Carteira de Identificação Estudantil (CIE) física em uma versão digital, facilitando o acesso e o uso pelos alunos da faculdade Esuda. A aplicação é compatível com dispositivos Android e foi desenvolvida utilizando tecnologias modernas para garantir uma experiência de usuário eficiente e intuitiva.
 
-## Descrição
+## Tecnologias Utilizadas
 
-O projeto DNE Digital JS é uma aplicação JavaScript desenvolvida para [descrever a funcionalidade principal do projeto]. Ele foi criado com o objetivo de [objetivo principal do projeto].
+### Front-end
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Redux**: Gerenciamento de estado previsível para aplicações JavaScript.
+- **TailwindCSS**: Framework CSS utilitário para estilização rápida e eficiente.
+
+### Back-end
+- **Node.js**: Ambiente de execução JavaScript server-side.
+- **Express**: Framework web para Node.js, rápido e minimalista.
+
+## Instalação e Configuração
+
+### Clone o projeto
+Para começar, clone o repositório para o seu ambiente local:
+```sh
+git clone https://github.com/renanalencar/dne-digital
 
 ## Estrutura do Projeto
 
@@ -33,14 +47,6 @@ Para rodar os testes, execute:
 ```bash
 npm test
 ```
-
-## Contribuição
-
-1. Faça um fork do projeto.
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`).
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`).
-4. Faça o push para a branch (`git push origin feature/nova-feature`).
-5. Abra um Pull Request.
 
 ## Licença
 
